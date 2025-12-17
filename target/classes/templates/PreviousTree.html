@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Previous Trees</title>
+</head>
+<body>
+  <h1>Previous Trees</h1>
+
+  <a href="/enter-numbers">Back to input</a>
+  <hr/>
+
+  <div th:if="${#lists.isEmpty(results)}">
+    <p>No saved trees yet.</p>
+  </div>
+
+  <div th:each="r : ${results}" style="margin-bottom: 24px;">
+    <h3 th:text="'Result #' + ${r.id} + ' (' + ${r.createdAt} + ')'"></h3>
+    <p><strong>Input:</strong> <span th:text="${r.inputNumbers}"></span></p>
+    <pre th:text="${r.treeJson}" style="background:#f4f4f4; padding:12px;"></pre>
+    <hr/>
+  </div>
+</body>
+</html>
